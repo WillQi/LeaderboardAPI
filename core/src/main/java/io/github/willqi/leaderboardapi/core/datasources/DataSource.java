@@ -4,18 +4,30 @@ import io.github.willqi.leaderboardapi.core.datasources.exceptions.DataSourceExc
 
 import java.util.List;
 
-public interface DataSource<K, V extends Number> {
+/**
+ * Handles interacting with the database
+ * @param <K> Type associated with the identifier of each entry (e.g. id/username)
+ * @param <V> Type associated with the value of each entry (e.g. integers, doubles, etc etc)
+ */
+public interface DataSource<K, V> {
 
-    List<Record<K, V>> getTop() throws DataSourceException;
+    List<Record<K, V>> getTop(int placings) throws DataSourceException;
 
-    void set() throws DataSourceException;
+    void set(K key, V value) throws DataSourceException;
 
-    void add() throws DataSourceException;
+    void add(K key, V value) throws DataSourceException;
 
+    /**
+     * Cleanup operation if you do not want to use this datasource anymore
+     */
     void close() throws DataSourceException;
 
-
-    class Record<K, V extends Number> {
+    /**
+     * Represents each record retrieved by the DataSource
+     * @param <K> Type associated with the identifier of each entry (e.g. id/username)
+     * @param <V> Type associated with the value of each entry (e.g. integers, doubles, etc etc)
+     */
+    class Record<K, V> {
 
         private final K identifier;
         private final V value;

@@ -4,20 +4,26 @@ import io.github.willqi.leaderboardapi.core.datasources.exceptions.DataSourceExc
 
 import java.util.List;
 
-public class MemoryDataSource implements DataSource {
+/**
+ * This DataSource does not use any database connection and it's sole purpose
+ * is to provide a datasource for those who do not want to use any sort of database
+ * @param <K>
+ * @param <V> Values must implement the Comparable interface and will be sorted using the compareTo method
+ */
+public class MemoryDataSource<K, V extends Comparable<V>> implements DataSource<K, V> {
 
     @Override
-    public List<Record> getTop() throws DataSourceException {
+    public List<Record<K, V>> getTop(int placings) throws DataSourceException {
         return null;
     }
 
     @Override
-    public void set() throws DataSourceException {
+    public void set(K key, V value) throws DataSourceException {
 
     }
 
     @Override
-    public void add() throws DataSourceException {
+    public void add(K key, V value) throws DataSourceException {
 
     }
 

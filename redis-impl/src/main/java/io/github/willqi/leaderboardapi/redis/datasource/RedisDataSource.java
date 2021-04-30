@@ -8,17 +8,17 @@ import java.util.List;
 public class RedisDataSource<K, V extends Number> implements DataSource<K, V> {
 
     @Override
-    public List<Record<K, V>> getTop() throws DataSourceException {
+    public List<Record<K, V>> getTop(int placings) throws DataSourceException {
         return null;
     }
 
     @Override
-    public void set() throws DataSourceException {
+    public void set(K key, V value) throws DataSourceException {
 
     }
 
     @Override
-    public void add() throws DataSourceException {
+    public void add(K key, V value) throws DataSourceException {
 
     }
 
