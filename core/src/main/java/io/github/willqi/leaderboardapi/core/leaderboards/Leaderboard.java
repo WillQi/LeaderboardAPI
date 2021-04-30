@@ -1,4 +1,4 @@
-package io.github.willqi.leaderboardapi.core;
+package io.github.willqi.leaderboardapi.core.leaderboards;
 
 import io.github.willqi.leaderboardapi.core.datasources.DataSource;
 
@@ -9,17 +9,14 @@ import java.util.concurrent.CompletableFuture;
  * Represents a leaderboard
  * @param <K> Identifier of the leaderboard entry (e.g. UUID)
  * @param <V> Value associated with each leaderboard entry. (e.g. points)
+ * @param <D> DataSource type that should be used with this leaderboard
  */
-public abstract class Leaderboard<K, V> {
+public abstract class Leaderboard<K, V, D extends DataSource<?, ?>> {
 
-    protected final DataSource<?, ?> dataSource;
+    protected final D dataSource;
 
-    public Leaderboard(DataSource<?, ?> dataSource) {
+    public Leaderboard(D dataSource) {
         this.dataSource = dataSource;
-    }
-
-    public Leaderboard() {
-        this.dataSource = null;
     }
 
     /**
