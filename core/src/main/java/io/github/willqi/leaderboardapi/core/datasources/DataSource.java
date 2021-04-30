@@ -13,9 +13,15 @@ public interface DataSource<K, V> {
 
     List<Record<K, V>> getTop(int placings) throws DataSourceException;
 
+    V get(K key) throws DataSourceException;
+
     void set(K key, V value) throws DataSourceException;
 
     void add(K key, V value) throws DataSourceException;
+
+    void remove(K key) throws DataSourceException;
+
+    void reset() throws DataSourceException;
 
     /**
      * Cleanup operation if you do not want to use this datasource anymore

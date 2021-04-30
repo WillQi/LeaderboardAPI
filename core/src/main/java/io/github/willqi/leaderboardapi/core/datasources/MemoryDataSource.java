@@ -18,12 +18,27 @@ public class MemoryDataSource<K, V extends Comparable<V>> implements DataSource<
     }
 
     @Override
+    public V get(K key) throws DataSourceException {
+        return null;
+    }
+
+    @Override
     public void set(K key, V value) throws DataSourceException {
 
     }
 
     @Override
     public void add(K key, V value) throws DataSourceException {
+
+    }
+
+    @Override
+    public void remove(K key) throws DataSourceException {
+
+    }
+
+    @Override
+    public void reset() throws DataSourceException {
 
     }
 
