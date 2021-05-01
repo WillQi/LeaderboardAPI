@@ -6,4 +6,8 @@ public class DataSourceException extends Exception {
         super(throwable);
     }
 
+    public DataSourceException(String message) {
+        super(message);
+    }
+
 }

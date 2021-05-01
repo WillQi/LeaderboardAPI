@@ -45,7 +45,7 @@ public abstract class Leaderboard<K, V, D extends DataSource<?, ?>> {
         private final K identifier;
         private final V value;
 
-        protected Entry(K identifier, V value) {
+        public Entry(K identifier, V value) {
             this.identifier = identifier;
             this.value = value;
         }

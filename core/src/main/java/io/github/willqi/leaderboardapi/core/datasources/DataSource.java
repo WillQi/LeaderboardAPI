@@ -21,6 +21,9 @@ public interface DataSource<K, V> {
 
     void remove(K key) throws DataSourceException;
 
+    /**
+     * Delete all entries in the datasource
+     */
     void reset() throws DataSourceException;
 
     /**
@@ -38,7 +41,7 @@ public interface DataSource<K, V> {
         private final K identifier;
         private final V value;
 
-        protected Record(K identifier, V value) {
+        public Record(K identifier, V value) {
             this.identifier = identifier;
             this.value = value;
         }
