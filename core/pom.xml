@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.willqi.leaderboardapi.core</groupId>
-    <artifactId>core</artifactId>
+    <artifactId>LeaderboardAPI-Core</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
