@@ -1,7 +1,7 @@
-package io.github.willqi.leaderboardapi.core.datasources;
+package io.github.willqi.leaderboardapi.core.examples;
 
 /**
- * This DataSource does not use any database connection and it's sole purpose
+ * This example DataSource does not use any database connection and it's sole purpose
  * is to provide a datasource for those who do not want to use any sort of database
  * BUT are using numerical values.
  * @param <K> Type of the identifier the value is associated with

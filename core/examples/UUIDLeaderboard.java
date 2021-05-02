@@ -1,4 +1,4 @@
-package io.github.willqi.leaderboardapi.core.leaderboards;
+package io.github.willqi.leaderboardapi.core.examples;
 
 import io.github.willqi.leaderboardapi.core.datasources.DataSource;
 import io.github.willqi.leaderboardapi.core.datasources.exceptions.DataSourceException;
@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Example of a Leaderboard with UUIDs as keys and using any value.
+ * @param <V> Type of the value used for this leaderboard
+ */
 public class UUIDLeaderboard<V> extends Leaderboard<UUID, V, DataSource<String, V>> {
 
     public UUIDLeaderboard(DataSource<String, V> dataSource) {

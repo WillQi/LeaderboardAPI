@@ -1,4 +1,6 @@
-package io.github.willqi.leaderboardapi.core.datasources;
+package io.github.willqi.leaderboardapi.core.examples;
+
+import io.github.willqi.leaderboardapi.core.DataSource;
 
 import java.util.List;
 import java.util.Map;
@@ -6,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 /**
- * This DataSource does not use any database connection and it's sole purpose
+ * This example DataSource does not use any database connection and it's sole purpose
  * is to provide a datasource for those who do not want to use any sort of database
  * Note: add cannot be used with this DataSource because there is no guarantee that V is a number.
  * @param <K> Type of the identifier the value is associated with
