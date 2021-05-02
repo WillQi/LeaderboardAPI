@@ -1,9 +1,9 @@
 package io.github.willqi.leaderboardapi.core.leaderboards;
 
 import io.github.willqi.leaderboardapi.core.datasources.DataSource;
+import io.github.willqi.leaderboardapi.core.datasources.exceptions.DataSourceException;
 
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 /**
  * Represents a leaderboard
@@ -24,16 +24,15 @@ public abstract class Leaderboard<K, V, D extends DataSource<?, ?>> {
      * @param placings Amount of entries you want returned
      * @return List of leaderboard entries from first place to last place
      */
-    public abstract CompletableFuture<List<Entry<K, V>>> getTop(int placings);
-
-    public abstract CompletableFuture<V> get(K key);
-    public abstract CompletableFuture<Void> add(K key, V amount);
-    public abstract CompletableFuture<Void> set(K key, V value);
-    public abstract CompletableFuture<Void> remove(K key);
+    public abstract List<Entry<K, V>> getTop(int placings) throws DataSourceException;
+    public abstract V get(K key) throws DataSourceException;
+    public abstract void add(K key, V amount) throws DataSourceException;
+    public abstract void set(K key, V value) throws DataSourceException;
+    public abstract void remove(K key) throws DataSourceException;
     /**
      * Delete all entries in a leaderboard resetting it to a blank state
      */
-    public abstract CompletableFuture<Void> reset();
+    public abstract void reset() throws DataSourceException;
 
     /**
      * Represents each entry of a leaderboard

@@ -4,11 +4,8 @@ import io.github.willqi.leaderboardapi.core.datasources.DataSource;
 import io.github.willqi.leaderboardapi.core.datasources.exceptions.DataSourceException;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
 
 public class UUIDLeaderboard<V> extends Leaderboard<UUID, V, DataSource<String, V>> {
 
@@ -17,75 +14,36 @@ public class UUIDLeaderboard<V> extends Leaderboard<UUID, V, DataSource<String, 
     }
 
     @Override
-    public CompletableFuture<List<Entry<UUID, V>>> getTop(int placings) {
-        return CompletableFuture.supplyAsync(() -> {
-            List<Entry<UUID, V>> results = new ArrayList<>();
-            try {
-                this.dataSource.getTop(placings).forEach(record ->
-                    results.add(new Entry<>(UUID.fromString(record.getIdentifier()), record.getValue())));
-
-            } catch (DataSourceException exception) {
-                throw new CompletionException(exception);
-            }
-            return Collections.unmodifiableList(results);
-        });
+    public List<Entry<UUID, V>> getTop(int placings) throws DataSourceException {
+        List<Entry<UUID, V>> results = new ArrayList<>();
+        this.dataSource.getTop(placings).forEach(record ->
+                results.add(new Entry<>(UUID.fromString(record.getIdentifier()), record.getValue())));
+        return results;
     }
 
     @Override
-    public CompletableFuture<V> get(UUID key) {
-        return CompletableFuture.supplyAsync(() -> {
-            V result;
-            try {
-                result = this.dataSource.get(key.toString());
-            } catch (DataSourceException exception) {
-                throw new CompletionException(exception);
-            }
-            return result;
-        });
+    public V get(UUID key) throws DataSourceException {
+        return this.dataSource.get(key.toString());
     }
 
     @Override
-    public CompletableFuture<Void> add(UUID key, V amount) {
-        return CompletableFuture.runAsync(() -> {
-            try {
-                this.dataSource.add(key.toString(), amount);
-            } catch (DataSourceException exception) {
-                throw new CompletionException(exception);
-            }
-        });
+    public void add(UUID key, V amount) throws DataSourceException {
+        this.dataSource.add(key.toString(), amount);
     }
 
     @Override
-    public CompletableFuture<Void> set(UUID key, V value) {
-        return CompletableFuture.runAsync(() -> {
-            try {
-                this.dataSource.set(key.toString(), value);
-            } catch (DataSourceException exception) {
-                throw new CompletionException(exception);
-            }
-        });
+    public void set(UUID key, V value) throws DataSourceException {
+        this.dataSource.set(key.toString(), value);
     }
 
     @Override
-    public CompletableFuture<Void> remove(UUID key) {
-        return CompletableFuture.runAsync(() -> {
-            try {
-                this.dataSource.remove(key.toString());
-            } catch (DataSourceException exception) {
-                throw new CompletionException(exception);
-            }
-        });
+    public void remove(UUID key) throws DataSourceException {
+        this.dataSource.remove(key.toString());
     }
 
     @Override
-    public CompletableFuture<Void> reset() {
-        return CompletableFuture.runAsync(() -> {
-            try {
-                this.dataSource.reset();
-            } catch (DataSourceException exception) {
-                throw new CompletionException(exception);
-            }
-        });
+    public void reset() throws DataSourceException {
+        this.dataSource.reset();
     }
 
 }
