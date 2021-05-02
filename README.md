@@ -13,8 +13,3 @@ You can find the latest jars in the [releases](https://github.com/WillQi/Leaderb
 - `cd LeaderboardAPI`
 - `mvn clean package`
 - Navigate to the `target` folder in the `core` and optionally the implementation you want, and then add the jars to your project.
-
-## Usage
-```java
-    // Will be updated soon! Stay tuned!
-```
