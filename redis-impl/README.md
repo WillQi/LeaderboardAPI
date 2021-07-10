@@ -21,7 +21,7 @@ import java.util.UUID;
 class Main {
     public static void main(String[] args) {
         DataSource<String, Double> dataSource = new RedisDataSource("key to store leaderboard under", "0.0.0.0", 6379, "username", "password");
-        Leaderboard<UUID, Double, DataSource<String, Double>> leaderboard = new UUIDLeaderboard<>();
+        Leaderboard<UUID, Double, DataSource<String, Double>> leaderboard = new UUIDLeaderboard<>(dataSource);
         // From here on out, you can use the leaderboard as normally!
     }
 }
